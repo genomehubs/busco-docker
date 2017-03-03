@@ -24,7 +24,7 @@ Build the docker image
 docker build -t busco .
 ```
 
-Run repeatmasker
+Run BUSCO
 
 ```
 mkdir busco
