@@ -1,6 +1,6 @@
 ## BUSCO docker container
 
-Repeatmasker docker container built from 
+BUSCO docker container built from [hub.docker.com/r/vera/busco](https://hub.docker.com/r/vera/busco/)
 with modifications to make it easier to use as a GenomeHubs container by running as UID 1000, separating input and output 
 directories and renaming output files.
 
