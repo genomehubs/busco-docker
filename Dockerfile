@@ -18,9 +18,13 @@ COPY startup.sh /
 
 USER dockeruser
 
-COPY *.tar.gz /data
+COPY *.tar.gz /data/
 
-RUN tar xf *.tar.gz && rm *.tar.gz
+WORKDIR /data
+
+RUN ls *.tar.gz | xargs -n1 tar xzf 
+
+RUN rm *.tar.gz
 
 ENTRYPOINT ["/startup.sh"]
 
