@@ -1,20 +1,20 @@
 #!/bin/bash
 
-cp /in/$INFILE ./
+cp /in/$ASSEMBLY ./
 
-if [[ $INFILE =~ \.gz$ ]]; then
-  gunzip $INFILE
-  INFILE=${INFILE%.gz}
+if [[ $ASSEMBLY =~ \.gz$ ]]; then
+  gunzip $ASSEMBLY
+  ASSEMBLY=${ASSEMBLY%.gz}
 fi
 
 BUSCO.py \
-       -i $INFILE \
+       -i $ASSEMBLY \
        -o output \
        $@
 
-mv run_output/short_summary_output.txt /out/$INFILE.busco.short_summary.txt
-gzip -c run_output/full_table_output.tsv > /out/$INFILE.busco.full_table.tsv.gz
-mv run_output/single_copy_busco_sequences ${INFILE}.busco.single_copy
-tar -zcf ${INFILE}.busco.single_copy.tar.gz ${INFILE}.busco.single_copy
-mv ${INFILE}.busco.single_copy.tar.gz /out
+mv run_output/short_summary_output.txt /out/$ASSEMBLY.busco.short_summary.txt
+gzip -c run_output/full_table_output.tsv > /out/$ASSEMBLY.busco.full_table.tsv.gz
+mv run_output/single_copy_busco_sequences ${ASSEMBLY}.busco.single_copy
+tar -zcf ${ASSEMBLY}.busco.single_copy.tar.gz ${ASSEMBLY}.busco.single_copy
+mv ${ASSEMBLY}.busco.single_copy.tar.gz /out
 
